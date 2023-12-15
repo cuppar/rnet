@@ -1,3 +1,6 @@
+mod tcp_client;
+mod tcp_server;
+
 use std::{sync::mpsc, thread};
 
 fn main() {
