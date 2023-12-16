@@ -2,7 +2,10 @@ use std::{
     io::{Read, Write},
     net::{TcpListener, TcpStream},
     thread,
+    time::Duration,
 };
+
+use rand::{thread_rng, Rng};
 type Result<T> = std::result::Result<T, std::io::Error>;
 
 fn handle_client(mut stream: TcpStream) -> Result<()> {
@@ -14,6 +17,9 @@ fn handle_client(mut stream: TcpStream) -> Result<()> {
             return Ok(());
         }
         println!("read: {}", String::from_utf8_lossy(&buf[..bytes_read]));
+        let sleep = Duration::from_secs(thread_rng().gen_range(0..6));
+        println!("Sleeping for {:?} before replying", sleep);
+        thread::sleep(sleep);
         stream.write(&buf[..bytes_read])?;
     }
 }
