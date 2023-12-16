@@ -2,6 +2,7 @@ mod tcp_client;
 mod tcp_server;
 mod udp_server;
 mod udp_client;
+mod net;
 
 use std::{sync::mpsc, thread};
 
