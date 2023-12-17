@@ -1,7 +1,5 @@
 use futures::{
-    executor,
     future::{BoxFuture, FutureExt},
-    stream::PollNext,
     task::{waker_ref, ArcWake},
 };
 use std::{
